@@ -3,14 +3,15 @@ on: workflow_dispatch
 jobs:
   frist-job:
     runs-on: ubuntu-latest
-    steps: 
-      - name: frist-step
+    steps:
+      - name: first-step
         run: echo "Hello World..!"
       - name: github checkout
         uses:  actions/checkout@v7
   second-job:
-    runs-on: ubuntu-latest
-    steps: 
+      needs: frist-job
+      runs-on: ubuntu-latest
+      steps: 
       - name: test-step
         run: echo "this is test step"
       - name: test-code
